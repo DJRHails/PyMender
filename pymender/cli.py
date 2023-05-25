@@ -47,7 +47,11 @@ def run_command(Command: type[CodemodCommand], repo_root: str = ".") -> int:
     gitignore_path = Path(args.gitignore) if args.gitignore else Path(repo_root) / ".gitignore"
     if gitignore_path.exists() and (validator := parse_gitignore(gitignore_path)):
         files = [file for file in files if not validator(file)]
-        
+    
+    if not files:
+        print("No files to modify! Check if you need to adjust the .gitignore", file=sys.stderr)
+        return 1
+    
     try:
         result = parallel_exec_transform_with_prettyprint(
             command_instance, files, repo_root=repo_root,
@@ -92,7 +96,7 @@ def main() -> int:
         "command",
         metavar="COMMAND",
         choices=command_lookup.keys(),
-        help="The codemod to run.",
+        help=f"The codemod to run, choose from: {', '.join(command_lookup.keys())}}",
     )
     args, _ = parser.parse_known_args()
     
