@@ -16,7 +16,7 @@ find = {}  # Scan the project directory with the default parameters
 
 
 [project.scripts]
-cli-name = "pymender:__main__"
+pymender = "pymender.cli:main"
 
 [tool.bumpver]
 current_version = "0.0.3"
