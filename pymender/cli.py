@@ -96,7 +96,7 @@ def main() -> int:
         "command",
         metavar="COMMAND",
         choices=command_lookup.keys(),
-        help=f"The codemod to run, choose from: {', '.join(command_lookup.keys())}}",
+        help=f"The codemod to run, choose from: {', '.join(command_lookup.keys())}",
     )
     args, _ = parser.parse_known_args()
     
