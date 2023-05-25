@@ -32,6 +32,5 @@ push = true
 ]
 "README.md" = [
     "{version}",
-    "{pep440_version}",
 ]
 

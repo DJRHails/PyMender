@@ -5,6 +5,9 @@ Uses the excellent [libCST](https://github.com/Instagram/LibCST) to perform enti
 ## Usage
 
 ```bash
+pip install pymender==0.0.1
+
+
 # Run a particular codemod
 python3 -m pymender <codemod> <path_to_project>
 # e.g.
