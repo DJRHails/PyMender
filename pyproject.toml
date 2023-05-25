@@ -1,6 +1,6 @@
 [project]
 name = "pymender"
-version = "0.0.3"
+version = "0.0.4"
 dynamic = ["dependencies", "readme"]
 
 [build-system]
@@ -19,7 +19,7 @@ find = {}  # Scan the project directory with the default parameters
 pymender = "pymender.cli:main"
 
 [tool.bumpver]
-current_version = "0.0.3"
+current_version = "0.0.4"
 version_pattern = "MAJOR.MINOR.PATCH"
 commit_message = "bump version {old_version} -> {new_version}"
 commit = true
