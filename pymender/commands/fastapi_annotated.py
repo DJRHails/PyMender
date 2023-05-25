@@ -45,9 +45,6 @@ def adapt_param(param: cst.Param) -> cst.Param | None:
             call = param.default
 
             # Find the default value (either first unnamed argument or default=)
-            # breakpoint()
-
-            # First unnamed argument, that is not Ellipsis
             first_unnamed_arg = next(
                 (arg for arg in call.args if arg.keyword is None),
                 None,
@@ -71,11 +68,15 @@ def adapt_param(param: cst.Param) -> cst.Param | None:
                 param.annotation.annotation if param.annotation is not None else None,
                 call,
             ]
+            
+            def should_be_included_as_default(default: cst.BaseExpression) -> bool:
+                return default and not isinstance(default.value, cst.Ellipsis)
+            
             return wrap_subscript_elements_with_annotated(
                 param,
                 elements,
                 default.value
-                if default and not isinstance(default.value, cst.Ellipsis)
+                if should_be_included_as_default(default)
                 else None,
             )
 
