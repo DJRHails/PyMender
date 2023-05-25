@@ -20,6 +20,10 @@ def run_command(Command: type[CodemodCommand], repo_root: str = ".") -> int:
         description=Command.DESCRIPTION,
     )
     parser.add_argument(
+        "command",
+        metavar="COMMAND",
+    )
+    parser.add_argument(
         "path",
         metavar="PATH",
         nargs="+",
@@ -43,10 +47,14 @@ def run_command(Command: type[CodemodCommand], repo_root: str = ".") -> int:
     context = CodemodContext()
     command_instance = Command(context)
     files = gather_files(args.path)
+    print(f"Found {len(files)} files in {args.path}", file=sys.stderr)
     
     gitignore_path = Path(args.gitignore) if args.gitignore else Path(repo_root) / ".gitignore"
+    
     if gitignore_path.exists() and (validator := parse_gitignore(gitignore_path)):
+        print(f"Filtering files through '{gitignore_path}'...", file=sys.stderr)
         files = [file for file in files if not validator(file)]
+        print(f"Found {len(files)} files after filtering", file=sys.stderr)
     
     if not files:
         print("No files to modify! Check if you need to adjust the .gitignore", file=sys.stderr)
