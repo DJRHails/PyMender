@@ -12,7 +12,7 @@ pymender <codemod> <path_to_project>
 
 ## What codemods are available?
 
-### `FastAPIAnnotated`
+### ⚡ `FastAPIAnnotated`
 
 Converts FastAPI endpoints to use the preferred `Annotated[<type>, Depends(<dependency>)]` syntax rather than `: <type> = Depends(<dependency>)`.
 
