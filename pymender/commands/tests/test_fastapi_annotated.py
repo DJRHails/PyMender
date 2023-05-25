@@ -10,6 +10,7 @@ def example_function(
     query: str = Query("foo"),
     zar: str = Query(default="bar", alias="z"),
     foo: str = Depends(get_foo),
+    *,
     bar: str = Depends(get_bar),
     body: str = Body(...),
 ) -> str:
@@ -24,10 +25,11 @@ from typing import Annotated
 def example_function(
     value: int,
     foo: Annotated[str, Depends(get_foo)],
-    bar: Annotated[str, Depends(get_bar)],
-    body: Annotated[str, Body()],
     query: Annotated[str, Query()] = "foo",
     zar: Annotated[str, Query(alias="z")] = "bar",
+    *,
+    bar: Annotated[str, Depends(get_bar)],
+    body: Annotated[str, Body()],
 ) -> str:
     return 'example'
 
