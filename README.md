@@ -24,7 +24,7 @@ Converts FastAPI endpoints to use the preferred `Annotated[<type>, Depends(<depe
 - *Multi-purpose* e.g. `Annotated[str, fastapi.Query(), typer.Argument()]` is now possible.
 
 ```bash
-pymender FastAPIAnnotated .
+pymender FastAPIAnnotated <folder-to-upgrade>
 ```
 
 | Before | After |
