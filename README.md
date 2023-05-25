@@ -5,7 +5,7 @@ Perform entire codebase refactors in a way that is _reproducible_, _testable_ an
 ## Usage
 
 ```bash
-pip install pymender==0.1.2
+pip install pymender==0.2.0
 
 pymender <codemod> <path_to_project>
 ```
