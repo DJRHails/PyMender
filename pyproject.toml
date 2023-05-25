@@ -1,7 +1,16 @@
 [project]
 name = "pymender"
 version = "0.0.5"
+authors = [
+    { name="Daniel Hails", email="pymender@hails.info" },
+]
+description = "Mend your Python projects with reproducible refactors"
+requires-python = ">=3.10"
 dynamic = ["dependencies", "readme"]
+
+[project.urls]
+"Homepage" = "https://github.com/DJRHails/pymender"
+"Bug Tracker" = "https://github.com/DJRHails/pymender/issues"
 
 [build-system]
 requires = ["setuptools", "wheel"]
