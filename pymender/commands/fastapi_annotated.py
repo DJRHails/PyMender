@@ -39,7 +39,7 @@ def adapt_param(param: cst.Param) -> cst.Param | None:
                 param.default,
             ]
             return wrap_subscript_elements_with_annotated(param, elements, None)
-        case cst.Call(func=cst.Name("Body")) | cst.Call(func=cst.Name("Query")):
+        case cst.Call(func=cst.Name("Body")) | cst.Call(func=cst.Name("Query")) | cst.Call(func=cst.Name("Argument")) | cst.Call(func=cst.Name("Option")):
             logger.info(f"Found Body annotation")
 
             call = param.default
