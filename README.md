@@ -31,6 +31,15 @@ pymender FastAPIAnnotated <folder-to-upgrade>
 | --- | --- |
 | <pre>@router.get('/example')<br/>def example_function(<br/>    value: int,<br/>    query: str = Query("foo"),<br/>    zar: str = Query(default="bar", alias="z"),<br/>    foo: str = Depends(get_foo),<br/>    *,<br/>    bar: str = Depends(get_bar),<br/>    body: str = Body(...),<br/>) -> str:<br/>    return 'example'</pre> | <pre>@router.get('/example')<br/>def example_function(<br/>    value: int,<br/>    foo: Annotated[str, Depends(get_foo)],<br/>    query: Annotated[str, Query()] = "foo",<br/>    zar: Annotated[str, Query(alias="z")] = "bar",<br/>    *,<br/>    bar: Annotated[str, Depends(get_bar)],<br/>    body: Annotated[str, Body()],<br/>) -> str:<br/>    return 'example'</pre> |
 
+### `MovePackage`
+
+Moves a package from one location to another.
+
+```bash
+pymender MovePackage --from <from> --to <to> <path_to_project>
+```
+```
+
 ## Developer Guide
 
 ```bash
