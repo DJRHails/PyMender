@@ -22,8 +22,6 @@ jobs:
 
       - name: Set up uv
         uses: astral-sh/setup-uv@v3
-        with:
-          enable-cache: true
 
       - name: Set up Python 3.13
         run: uv python install 3.13
